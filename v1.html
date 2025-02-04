@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMeetup V1 - Past Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold gradient-text">DevMeetup</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="v1.html" class="text-indigo-600">V1</a>
+                    <a href="v2.html" class="hover:text-indigo-600 transition-colors">V2</a>
+                    <a href="index.html#v3" class="hover:text-indigo-600 transition-colors">V3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">DevMeetup V1</h1>
+            <p class="text-xl mb-8">The Beginning of Something Great</p>
+            <div class="flex justify-center space-x-4">
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    June 15, 2024
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    Innovation Hub
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="fas fa-users mr-2"></i>
+                    50+ Attendees
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Organizers Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Meet the Organizers</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                        <img src="images/chapi.jpg" alt="Temkin Mengistu" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Temkin Mengistu</h3>
+                    <p class="text-gray-600">Lead Organizer</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                        <img src="https://th.bing.com/th/id/R.bece771786c8bba343eabcbc63be1020?rik=iE7FHVmYf9hRMg&pid=ImgRaw&r=0" alt="Merry Abate" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Merry Abate</h3>
+                    <p class="text-gray-600">Technical Coordinator</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                        <img src="images/mulu.jpg" alt="Mulu Tsega" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">Mulu Tsega</h3>
+                    <p class="text-gray-600">Product Manager</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Highlights -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Event Highlights</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Talks -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold mb-6">Featured Talks</h3>
+                    <div class="glass-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold">Modern Web Development</h4>
+                                <p class="text-gray-600 mb-2">By temkin mengistu</p>
+                                <p class="mb-4">An insightful journey into modern web development practices and emerging technologies.</p>
+                                <div class="flex space-x-2">
+                                    <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Web Dev</span>
+                                    <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold">Cloud Native Applications</h4>
+                                <p class="text-gray-600 mb-2">By solomon bogale</p>
+                                <p class="mb-4">Deep dive into building scalable applications using cloud-native technologies.</p>
+                                <div class="flex space-x-2">
+                                    <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Cloud</span>
+                                    <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">DevOps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshops -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold mb-6">Workshops</h3>
+                    <div class="glass-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold">Docker Workshop</h4>
+                                <p class="text-gray-600 mb-2">3-hour Hands-on Session</p>
+                                <p class="mb-4">Learn Docker from basics to advanced concepts with practical exercises.</p>
+                                <div class="flex space-x-2">
+                                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Hands-on</span>
+                                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold">React Advanced Patterns</h4>
+                                <p class="text-gray-600 mb-2">2-hour Interactive Session</p>
+                                <p class="mb-4">Master advanced React patterns and best practices.</p>
+                                <div class="flex space-x-2">
+                                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">React</span>
+                                    <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Advanced</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Our Sponsors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <img src="https://play-lh.googleusercontent.com/FOk-uG2oIBUc7v6NhpMGvdnQO6kuKZRAQX5lpGl_J5MntGkQjm8btOy1MPdmnkvaukYs" alt="Sponsor 1" class="mx-auto mb-4">
+                    <h3 class="font-bold">TechCorp</h3>
+                    <p class="text-gray-600">Gold Sponsor</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <img src="https://th.bing.com/th/id/OIP.Z1J9bUftGobhjUl7JMYvlQHaDt?rs=1&pid=ImgDetMain" alt="Sponsor 2" class="mx-auto mb-4">
+                    <h3 class="font-bold">DevTools Inc</h3>
+                    <p class="text-gray-600">Silver Sponsor</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <img src="https://th.bing.com/th/id/R.09132ee82cc7a27cce2a38f31075c3d3?rik=%2bEc3wWd2yIs6Eg&pid=ImgRaw&r=0" alt="Sponsor 3" class="mx-auto mb-4">
+                    <h3 class="font-bold">CloudTech</h3>
+                    <p class="text-gray-600">Silver Sponsor</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <img src="https://th.bing.com/th/id/OIP.BnYoBSH8xA-_NgbC4qC9BAHaDT?rs=1&pid=ImgDetMain" alt="Sponsor 4" class="mx-auto mb-4">
+                    <h3 class="font-bold">CodeLabs</h3>
+                    <p class="text-gray-600">Bronze Sponsor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Event Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="images/meetup.jpg" alt="Event Photo 1" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="images/meetup2.jpg" alt="Event Photo 2" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="images/meetup3.jpg" alt="Event Photo 3" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="images/meetup4.jpg" alt="Event Photo 4" class="rounded-lg hover:opacity-75 transition">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">DevMeetup</a>
+            <p class="mt-4"> 2025 DevMeetup. All rights reserved.</p>
+            <p class="mt-4"> made by sum.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Initialize Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMeetup V2 - Past Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold gradient-text">DevMeetup</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="v1.html" class="hover:text-indigo-600 transition-colors">V1</a>
+                    <a href="v2.html" class="text-indigo-600">V2</a>
+                    <a href="index.html#v3" class="hover:text-indigo-600 transition-colors">V3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">DevMeetup V2</h1>
+            <p class="text-xl mb-8">Scaling New Heights</p>
+            <div class="flex justify-center space-x-4">
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    October 20, 2024
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    Tech Convention Center
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3">
+                    <i class="fas fa-users mr-2"></i>
+                    200+ Attendees
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Achievements -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Key Achievements</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">200+</div>
+                    <p>Attendees</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">12</div>
+                    <p>Speakers</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">8</div>
+                    <p>Workshops</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">15+</div>
+                    <p>Sponsors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Speakers -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Featured Speakers</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-lg">
+                    <img src="https://via.placeholder.com/300" alt="Speaker 1" class="w-full rounded-lg mb-4">
+                    <h3 class="text-xl font-bold">Dr. Emily Chen</h3>
+                    <p class="text-gray-600 mb-2">AI Research Lead at TechCorp</p>
+                    <p class="mb-4">Keynote: The Future of AI in Development</p>
+                    <div class="flex space-x-2">
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">AI</span>
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">ML</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <img src="https://via.placeholder.com/300" alt="Speaker 2" class="w-full rounded-lg mb-4">
+                    <h3 class="text-xl font-bold">James Wilson</h3>
+                    <p class="text-gray-600 mb-2">Senior Architect at CloudTech</p>
+                    <p class="mb-4">Talk: Scaling Microservices Architecture</p>
+                    <div class="flex space-x-2">
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Cloud</span>
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Architecture</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <img src="https://via.placeholder.com/300" alt="Speaker 3" class="w-full rounded-lg mb-4">
+                    <h3 class="text-xl font-bold">Sarah Martinez</h3>
+                    <p class="text-gray-600 mb-2">Security Expert at SecureNet</p>
+                    <p class="mb-4">Workshop: Cybersecurity Best Practices</p>
+                    <div class="flex space-x-2">
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">Security</span>
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">DevSecOps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Highlights -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Workshop Highlights</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-indigo-100 p-3 rounded-lg">
+                            <i class="fas fa-laptop-code text-2xl text-indigo-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Advanced React Patterns</h3>
+                            <p class="text-gray-600 mb-2">4-hour Deep Dive</p>
+                            <p class="mb-4">Master advanced React patterns including hooks, context, and performance optimization.</p>
+                            <div class="flex space-x-2">
+                                <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <i class="fas fa-cloud text-2xl text-green-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Cloud-Native Development</h3>
+                            <p class="text-gray-600 mb-2">3-hour Workshop</p>
+                            <p class="mb-4">Build and deploy applications using cloud-native technologies.</p>
+                            <div class="flex space-x-2">
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Cloud</span>
+                                <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Networking Sessions -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Networking Sessions</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-comments text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Speed Networking</h3>
+                    <p>Quick 5-minute rotations to meet fellow developers</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-coffee text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Coffee & Code</h3>
+                    <p>Casual coding sessions with coffee and snacks</p>
+                </div>
+                <div class="glass-card p-6 rounded-lg text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Panel Discussions</h3>
+                    <p>Interactive Q&A with industry experts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Wall -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Our Amazing Sponsors</h2>
+            <div class="space-y-12">
+                <!-- Platinum Sponsors -->
+                <div>
+                    <h3 class="text-xl font-bold text-center mb-8">Platinum Sponsors</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="glass-card p-8 rounded-lg text-center">
+                            <img src="https://via.placeholder.com/300x150" alt="Sponsor 1" class="mx-auto mb-4">
+                            <h4 class="text-lg font-bold">TechGiant Corp</h4>
+                        </div>
+                        <div class="glass-card p-8 rounded-lg text-center">
+                            <img src="https://via.placeholder.com/300x150" alt="Sponsor 2" class="mx-auto mb-4">
+                            <h4 class="text-lg font-bold">CloudMaster Inc</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gold Sponsors -->
+                <div>
+                    <h3 class="text-xl font-bold text-center mb-8">Gold Sponsors</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="glass-card p-6 rounded-lg text-center">
+                            <img src="https://via.placeholder.com/200x100" alt="Sponsor 3" class="mx-auto mb-4">
+                            <h4 class="font-bold">DevTools Pro</h4>
+                        </div>
+                        <div class="glass-card p-6 rounded-lg text-center">
+                            <img src="https://via.placeholder.com/200x100" alt="Sponsor 4" class="mx-auto mb-4">
+                            <h4 class="font-bold">CodeCraft</h4>
+                        </div>
+                        <div class="glass-card p-6 rounded-lg text-center">
+                            <img src="https://via.placeholder.com/200x100" alt="Sponsor 5" class="mx-auto mb-4">
+                            <h4 class="font-bold">TechFlow</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">Event Memories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 1" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 2" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 3" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 4" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 5" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 6" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 7" class="rounded-lg hover:opacity-75 transition">
+                </a>
+                <a href="https://via.placeholder.com/800x600" data-fancybox="gallery" class="block">
+                    <img src="https://via.placeholder.com/400x300" alt="Event Photo 8" class="rounded-lg hover:opacity-75 transition">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">DevMeetup</a>
+            <p class="mt-4">© 2025 DevMeetup. All rights reserved.</p>
+            <p class="mt-4"> developed by sum.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Initialize Fancybox
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
+</body>
+</html>

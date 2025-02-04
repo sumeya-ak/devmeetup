@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMeetup V3 - The Future of Dev Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <!-- FullCalendar -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="text-2xl font-bold text-indigo-600">DevMeetup V3</a>
+                <div class="flex space-x-4">
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600">Features</a>
+                    <a href="#schedule" class="text-gray-600 hover:text-indigo-600">Schedule</a>
+                    <a href="#speakers" class="text-gray-600 hover:text-indigo-600">Speakers</a>
+                    <a href="#chat" class="text-gray-600 hover:text-indigo-600">Chat</a>
+                    <button id="loginBtn" onclick="openLoginModal()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Features -->
+    <section id="features" class="pt-32 pb-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
+        <div class="container mx-auto px-6 text-center text-white">
+            <h1 class="text-5xl font-bold mb-8">V3: The Future of Dev Meetups</h1>
+            
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <!-- Virtual Reality Sessions -->
+                <div class="glass-card p-6 rounded-lg text-center transform hover:scale-105 transition">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Virtual Reality Sessions</h3>
+                    <p class="text-white/80">Experience workshops in immersive VR environments</p>
+                </div>
+
+                <!-- AI Networking -->
+                <div class="glass-card p-6 rounded-lg text-center transform hover:scale-105 transition">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Networking</h3>
+                    <p class="text-white/80">Smart matchmaking for meaningful connections</p>
+                </div>
+
+                <!-- Interactive Learning -->
+                <div class="glass-card p-6 rounded-lg text-center transform hover:scale-105 transition">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Interactive Learning</h3>
+                    <p class="text-white/80">Real-time coding challenges and competitions</p>
+                </div>
+
+                <!-- Community Chat -->
+                <a href="#chat" class="glass-card p-6 rounded-lg text-center transform hover:scale-105 transition">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Community Chat</h3>
+                    <p class="text-white/80">Connect with peers in real-time discussions</p>
+                </a>
+            </div>
+
+            <!-- Event Details -->
+            <div class="flex justify-center space-x-8 mt-16">
+                <div class="glass-card px-6 py-3 rounded-lg">
+                    <i class="far fa-calendar-alt mr-2"></i>
+                    March 15-16, 2025
+                </div>
+                <div class="glass-card px-6 py-3 rounded-lg">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    Tech Innovation Center
+                </div>
+            </div>
+
+            <!-- Chat CTA -->
+            <div class="mt-12">
+                <a href="#chat" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition inline-flex items-center space-x-2">
+                    <i class="fas fa-comments"></i>
+                    <span>Join the Discussion</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Updates Banner -->
+    <div id="liveUpdatesBanner" class="fixed top-0 w-full bg-green-500 text-white py-3 hidden z-40">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
+                    <span id="liveUpdateText">Live updates will appear here during the event</span>
+                </div>
+                <button class="text-white hover:text-green-100" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column: Schedule -->
+            <div class="lg:col-span-2 space-y-8">
+                <div id="schedule" class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Event Schedule</h2>
+                    <div class="flex space-x-4 mb-4">
+                        <button class="schedule-view-btn px-4 py-2 rounded-lg bg-indigo-600 text-white" data-view="timelineView">Timeline</button>
+                        <button class="schedule-view-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700" data-view="calendarView">Calendar</button>
+                    </div>
+                    <div id="timelineView" class="space-y-6">
+                        <div class="relative pl-8 border-l-2 border-indigo-200">
+                            <div class="absolute -left-2 top-2 w-4 h-4 bg-indigo-600 rounded-full"></div>
+                            <div class="mb-1 text-sm text-gray-500">Monday, February 3, 2025 - 9:00 AM HST</div>
+                            <h3 class="text-lg font-semibold">Opening Keynote: Future of Development</h3>
+                            <p class="text-gray-600">Join us for an inspiring keynote about the future of software development.</p>
+                        </div>
+                        
+                        <div class="relative pl-8 border-l-2 border-indigo-200">
+                            <div class="absolute -left-2 top-2 w-4 h-4 bg-indigo-600 rounded-full"></div>
+                            <div class="mb-1 text-sm text-gray-500">Monday, February 3, 2025 - 11:00 AM HST</div>
+                            <h3 class="text-lg font-semibold">AI in Modern Development</h3>
+                            <p class="text-gray-600">Explore how AI is transforming the way we write and maintain code.</p>
+                        </div>
+                        
+                        <div class="relative pl-8 border-l-2 border-indigo-200">
+                            <div class="absolute -left-2 top-2 w-4 h-4 bg-indigo-600 rounded-full"></div>
+                            <div class="mb-1 text-sm text-gray-500">Monday, February 3, 2025 - 2:00 PM HST</div>
+                            <h3 class="text-lg font-semibold">Virtual Reality Workshop</h3>
+                            <p class="text-gray-600">Hands-on session with the latest VR development tools.</p>
+                        </div>
+                        
+                        <div class="relative pl-8 border-l-2 border-indigo-200">
+                            <div class="absolute -left-2 top-2 w-4 h-4 bg-indigo-600 rounded-full"></div>
+                            <div class="mb-1 text-sm text-gray-500">Monday, February 3, 2025 - 4:00 PM HST</div>
+                            <h3 class="text-lg font-semibold">Networking Session</h3>
+                            <p class="text-gray-600">Connect with fellow developers in our virtual networking space.</p>
+                        </div>
+                    </div>
+                    <div id="calendarView" class="hidden">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+
+                <!-- Speakers Section -->
+                <div id="speakers" class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Featured Speakers</h2>
+                    <div class="speakers-grid grid md:grid-cols-2 gap-6">
+                        <!-- Speaker cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Live Updates and Chat -->
+            <div class="space-y-8">
+                <!-- Live Updates -->
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Live Updates</h2>
+                    <div id="liveUpdates" class="space-y-4 max-h-96 overflow-y-auto">
+                        <!-- Live updates will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div id="chat" class="glass-card p-6 rounded-lg scroll-mt-20">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-2xl font-bold">Community Chat</h2>
+                        <div class="flex items-center space-x-2 text-sm text-green-500">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span id="onlineCount">5 online</span>
+                        </div>
+                    </div>
+                    <div id="chatMessages" class="h-96 overflow-y-auto space-y-4 mb-4 p-4 bg-white/50 rounded-lg">
+                        <!-- Chat messages will be populated by JavaScript -->
+                        <div class="text-center text-gray-500">
+                            Welcome to the DevMeetup V3 community chat! Please log in to join the conversation.
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <input type="text" id="chatInput" placeholder="Type your message..." 
+                               class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+                        <button onclick="sendMessage()" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Press Enter to send message</p>
+                </div>
+
+                <!-- User List -->
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-xl font-bold mb-4">Online Users</h2>
+                    <div id="onlineUsers" class="space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-700">Sarah Chen (Tech Lead)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-700">Alex Rodriguez (Full Stack Dev)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-700">Maya Patel (UI/UX Designer)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-700">Jordan Smith (DevOps)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-700">Liam O'Connor (Backend Dev)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg w-96 max-w-[90%] relative">
+            <!-- Close Button -->
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Auth Tabs -->
+            <div class="flex mb-6 border-b">
+                <button onclick="switchToLogin()" id="loginTab" class="flex-1 py-2 text-center font-semibold text-indigo-600 border-b-2 border-indigo-600">Login</button>
+                <button onclick="switchToSignup()" id="signupTab" class="flex-1 py-2 text-center font-semibold text-gray-500">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-1">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 rounded-lg border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-1">Password</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 rounded-lg border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" required>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                    Login
+                </button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-gray-700 mb-1">Name</label>
+                    <input type="text" id="signupName" class="w-full px-4 py-2 rounded-lg border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-1">Email</label>
+                    <input type="email" id="signupEmail" class="w-full px-4 py-2 rounded-lg border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-1">Password</label>
+                    <input type="password" id="signupPassword" class="w-full px-4 py-2 rounded-lg border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" required>
+                    <p class="text-sm text-gray-500 mt-1">Must be at least 6 characters</p>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                    Create Account
+                </button>
+            </form>
+
+            <!-- Error Message -->
+            <div id="authError" class="mt-4 text-red-600 text-sm text-center hidden"></div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="#chat" class="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-indigo-700 transition">
+            <i class="fas fa-comments text-xl"></i>
+            <span>Open Chat</span>
+        </a>
+    </div>
+
+    <script src="v3.js"></script>
+</body>
+</html>

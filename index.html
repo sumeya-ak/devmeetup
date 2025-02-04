@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMeetup 2025 - The Ultimate Developer Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold gradient-text">DevMeetup</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="v1.html" class="hover:text-indigo-600 transition-colors">V1</a>
+                    <a href="v2.html" class="hover:text-indigo-600 transition-colors">V2</a>
+                    <a href="#v3" class="hover:text-indigo-600 transition-colors">V3</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-20">
+        <div class="container mx-auto px-6 text-center relative">
+            <div class="animate-float">
+                <h1 class="text-5xl font-bold text-white mb-4">Developer Meetup 2025</h1>
+                <p class="text-xl text-white/80 mb-8">Build Amazing Projects</p>
+                <div class="space-y-4">
+                    <a href="v3.html" class="inline-block px-8 py-3 bg-white text-indigo-600 rounded-full font-bold hover:bg-opacity-90 transition">
+                        Join V3 Event
+                    </a>
+                    <p class="text-white/80">Limited spots available!</p>
+                </div>
+                
+                <!-- Quick Access Links -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- V3 Chat Room -->
+                    <a href="v3.html#chat" class="glass-card p-6 rounded-lg text-center text-white hover:scale-105 transition">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Community Chat</h3>
+                        <p class="text-white/80">Join the conversation in our V3 chat room</p>
+                    </a>
+                    
+                    <!-- Past Events -->
+                    <a href="v1.html" class="glass-card p-6 rounded-lg text-center text-white hover:scale-105 transition">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">V1 Event</h3>
+                        <p class="text-white/80">View highlights from our first meetup</p>
+                    </a>
+                    
+                    <!-- V2 Event -->
+                    <a href="v2.html" class="glass-card p-6 rounded-lg text-center text-white hover:scale-105 transition">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">V2 Event</h3>
+                        <p class="text-white/80">Explore our previous successful meetup</p>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Previous Events Section -->
+    <section id="v2" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Event Highlights</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Previous Events</h3>
+                        <div class="space-y-4">
+                            <a href="v1.html" class="block p-4 bg-white rounded-lg hover:shadow-lg transition">
+                                <h4 class="font-bold text-lg">V1: The Beginning</h4>
+                                <p class="text-gray-600">June 15, 2024 • Innovation Hub</p>
+                                <p class="mt-2">Where it all started - 50+ developers, groundbreaking talks, and amazing workshops.</p>
+                            </a>
+                            <a href="v2.html" class="block p-4 bg-white rounded-lg hover:shadow-lg transition">
+                                <h4 class="font-bold text-lg">V2: Scaling New Heights</h4>
+                                <p class="text-gray-600">October 20, 2024 • Tech Convention Center</p>
+                                <p class="mt-2">200+ attendees, 12 speakers, and cutting-edge tech discussions.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Our Sponsors</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-white rounded shadow-md hover:shadow-lg transition">
+                                <img src="https://play-lh.googleusercontent.com/FOk-uG2oIBUc7v6NhpMGvdnQO6kuKZRAQX5lpGl_J5MntGkQjm8btOy1MPdmnkvaukYs" alt="Sponsor 1" class="mx-auto mb-4" alt="TechCorp" class="mx-auto">
+                                <p class="mt-2">TechCorp</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded shadow-md hover:shadow-lg transition">
+                                <img src="https://th.bing.com/th/id/OIP.Z1J9bUftGobhjUl7JMYvlQHaDt?rs=1&pid=ImgDetMain" alt="DevTools Inc" class="mx-auto">
+                                <p class="mt-2">DevTools Inc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Previous Event Highlights</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start hover:transform hover:scale-105 transition">
+                            <i class="fas fa-microphone-alt text-3xl text-indigo-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">Keynote Speech</h4>
+                                <p class="text-gray-600">Future of Web Development by Temkin Mengistu</p>
+                                <div class="mt-2">
+                                    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">AI/ML</span>
+                                    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded ml-2">Web3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start hover:transform hover:scale-105 transition">
+                            <i class="fas fa-laptop-code text-3xl text-indigo-600 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">Workshop</h4>
+                                <p class="text-gray-600">Building Scalable Applications with Docker</p>
+                                <div class="mt-2">
+                                    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">DevOps</span>
+                                    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded ml-2">Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- V3 Preview Section -->
+    <section id="v3" class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">V3: The Future of Dev Meetups</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-lg text-center">
+                    <i class="fas fa-vr-cardboard text-5xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Virtual Reality Sessions</h3>
+                    <p>Experience workshops in immersive VR environments</p>
+                </div>
+                <div class="glass-card p-8 rounded-lg text-center">
+                    <i class="fas fa-robot text-5xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">AI Networking</h3>
+                    <p>Smart matchmaking for meaningful connections</p>
+                </div>
+                <div class="glass-card p-8 rounded-lg text-center">
+                    <i class="fas fa-brain text-5xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Interactive Learning</h3>
+                    <p>Real-time coding challenges and competitions</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-indigo-100 transition inline-block">Pre-register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">Stay Updated</h2>
+            <p class="mb-8 text-gray-600">Get notified about upcoming events and exclusive developer content</p>
+            <form class="max-w-md mx-auto">
+                <div class="flex gap-4">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">About Us</h4>
+                    <p class="text-gray-400">Creating the ultimate developer experience through community-driven events and knowledge sharing.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Code of Conduct</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Past Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Become a Sponsor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="far fa-envelope mr-2"></i>
+                            info@devmeetup.com
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +251 95489 5465
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-discord text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2025 DevMeetup. All rights reserved.</p>
+                <p>&copy; made by sum.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

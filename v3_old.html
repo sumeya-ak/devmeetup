@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMeetup V3 - The Future of Dev Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <!-- FullCalendar -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="text-2xl font-bold text-indigo-600">DevMeetup V3</a>
+                <div class="flex space-x-4">
+                    <a href="#schedule" class="text-gray-600 hover:text-indigo-600">Schedule</a>
+                    <a href="#speakers" class="text-gray-600 hover:text-indigo-600">Speakers</a>
+                    <a href="#chat" class="text-gray-600 hover:text-indigo-600">Chat</a>
+                    <button id="loginBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Live Updates Banner -->
+    <div id="liveUpdatesBanner" class="fixed top-0 w-full bg-green-500 text-white py-3 hidden z-40">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
+                    <span id="liveUpdateText">Live updates will appear here during the event</span>
+                </div>
+                <button class="text-white hover:text-green-100" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Column: Schedule -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Event Schedule</h2>
+                    <div class="flex space-x-4 mb-4">
+                        <button class="schedule-view-btn px-4 py-2 rounded-lg bg-indigo-600 text-white" data-view="timelineView">Timeline</button>
+                        <button class="schedule-view-btn px-4 py-2 rounded-lg bg-gray-200 text-gray-700" data-view="calendarView">Calendar</button>
+                    </div>
+                    <div id="timelineView">
+                        <!-- Timeline view content will be populated by JavaScript -->
+                    </div>
+                    <div id="calendarView" class="hidden">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+
+                <!-- Speakers Section -->
+                <div id="speakers" class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Featured Speakers</h2>
+                    <div class="speakers-grid grid md:grid-cols-2 gap-6">
+                        <!-- Speaker cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Live Updates and Chat -->
+            <div class="space-y-8">
+                <!-- Live Updates -->
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Live Updates</h2>
+                    <div id="liveUpdates" class="space-y-4 max-h-96 overflow-y-auto">
+                        <!-- Live updates will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div id="chat" class="glass-card p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Community Chat</h2>
+                    <div id="chatMessages" class="h-96 overflow-y-auto space-y-4 mb-4 p-4 bg-white/50 rounded-lg">
+                        <!-- Chat messages will be populated by JavaScript -->
+                    </div>
+                    <div class="flex space-x-2">
+                        <input type="text" id="chatInput" placeholder="Type your message..." 
+                               class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500">
+                        <button onclick="sendMessage()" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Press Enter to send message</p>
+                </div>
+
+                <!-- User List -->
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-xl font-bold mb-4">Online Users</h2>
+                    <div id="onlineUsers" class="space-y-2">
+                        <!-- Online users will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg w-96">
+            <h2 class="text-2xl font-bold mb-4">Login</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 rounded-lg border" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Password</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 rounded-lg border" required>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                    Login
+                </button>
+                <button type="button" onclick="closeLoginModal()" class="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="v3.js"></script>
+</body>
+</html>
