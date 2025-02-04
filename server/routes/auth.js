@@ -104,6 +104,27 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Verify token
+router.get('/verify', async (req, res) => {
+    try {
+        const token = req.header('x-auth-token');
+        if (!token) {
+            return res.status(401).json({ message: 'No token, authorization denied' });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'devmeetup-secret');
+        const user = users.get(decoded.email);
+        
+        if (!user) {
+            return res.status(401).json({ message: 'Token is not valid' });
+        }
+
+        res.json({ message: 'Token is valid' });
+    } catch (error) {
+        res.status(401).json({ message: 'Token is not valid' });
+    }
+});
+
 // Get current user
 router.get('/me', async (req, res) => {
     try {

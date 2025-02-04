@@ -203,16 +203,23 @@ async function sendMessage() {
     }
 
     try {
-        // Emit message directly through socket
-        socket.emit('chat_message', {
-            message,
-            room: currentRoom,
-            user: {
-                id: user.id,
-                name: user.name
-            }
+        // Send message to backend API
+        const response = await fetch(`${config.apiUrl}/api/chat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': token
+            },
+            body: JSON.stringify({
+                message,
+                room: currentRoom
+            })
         });
-        
+
+        if (!response.ok) {
+            throw new Error('Failed to send message');
+        }
+
         // Clear input
         input.value = '';
     } catch (error) {
@@ -387,7 +394,7 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/api/auth/register', {
+        const response = await fetch(`${config.apiUrl}/api/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -422,7 +429,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById('loginPassword').value;
 
     try {
-        const response = await fetch('http://localhost:3000/api/auth/login', {
+        const response = await fetch(`${config.apiUrl}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -487,9 +494,28 @@ function closeLoginModal() {
 
 // Initialize auth state
 document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-        updateUI(user);
+    
+    if (token && user) {
+        // Verify token with backend
+        fetch(`${config.apiUrl}/api/auth/verify`, {
+            headers: {
+                'x-auth-token': token
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                updateUI(user);
+                socket.emit('join_room', { room: currentRoom, token });
+            } else {
+                logout();
+            }
+        })
+        .catch(error => {
+            console.error('Token verification error:', error);
+            logout();
+        });
     }
 });
 
