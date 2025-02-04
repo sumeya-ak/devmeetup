@@ -1,5 +1,6 @@
 // Initialize Socket.IO for live updates
-const socket = io('http://localhost:3000', {
+import config from './config.js';
+const socket = io(config.socketUrl, {
     withCredentials: true,
     transports: ['websocket', 'polling']
 });

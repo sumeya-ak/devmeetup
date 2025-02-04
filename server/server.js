@@ -12,15 +12,16 @@ const server = http.createServer(app);
 // Socket.IO setup with CORS
 const io = socketIO(server, {
     cors: {
-        origin: ["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:5500", "http://127.0.0.1:5500"],
-        methods: ["GET", "POST"],
+        origin: process.env.FRONTEND_URL || '*',
+        methods: ['GET', 'POST'],
         credentials: true
     }
 });
 
 // Middleware
 app.use(cors({
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:5500", "http://127.0.0.1:5500"],
+    origin: process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5500', 'http://127.0.0.1:5500']
+                                   : '*',
     credentials: true
 }));
 app.use(express.json());
@@ -30,11 +31,9 @@ app.use(express.static(path.join(__dirname, '../')));
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/devmeetup', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => {
-    console.log('Connected to MongoDB successfully');
-}).catch(err => {
-    console.error('MongoDB connection error:', err);
-});
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
